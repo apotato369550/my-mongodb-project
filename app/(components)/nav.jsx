@@ -1,7 +1,21 @@
+import { faHome, faTicket } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
+
 const Nav = () => {
   return (
-    <div>Nav</div>
-  )
+    <nav>
+      <div>
+        <Link href="/">
+          <FontAwesomeIcon icon={faHome} className="icon" />
+        </Link>
+        <Link href="/TicketPage/new">
+          <FontAwesomeIcon icon={faTicket} className="icon" />
+        </Link>
+      </div>
+      <div className="text-default-text">johnandersyap510@gmail.com</div>
+    </nav>
+  );
 }
 
 export default Nav
