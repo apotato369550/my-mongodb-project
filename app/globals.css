@@ -2,20 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5,
+  h6 {
     @apply font-bold;
   }
+
   h1 {
     @apply text-4xl;
+    margin: 0 0 5px 0;
   }
   h2 {
     @apply text-3xl;
@@ -26,8 +25,22 @@
   h4 {
     @apply text-xl;
   }
+  h5 {
+    @apply text-lg;
+  }
   p {
-    @apply text-sm text-default-text;
+    @apply text-sm;
+  }
+  form {
+    @apply  rounded-xl p-4
+  }
+  label {
+    @apply mt-4
+  }
+  input,
+  select,
+  textarea {
+    @apply m-1 rounded  bg-card p-1;
   }
 }
 
