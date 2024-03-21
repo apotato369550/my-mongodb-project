@@ -5,6 +5,7 @@ import React, { useState } from "react";
 
 const TicketForm = () => {
 
+  const router = useRouter();
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -14,9 +15,22 @@ const TicketForm = () => {
       [name]: value,
     }))
   }
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch("api/Tickets", {
+      method: "POST",
+      body: JSON.stringify({formData}) ,
+        "content-type": "application/json"
+    })
 
-  const handleSubmit = () => {
-    console.log("submitted");
+    if (!res.ok) {
+      throw new Error("Failed to create Ticket")
+    }
+    router.refresh();
+    router.push("/");
+
+    console.log("Submitted")
   }
 
   const startingTicketData = {
@@ -88,15 +102,6 @@ const TicketForm = () => {
             checked={formData.priority == 2}
           />
           <label>2</label>
-          <input
-            type="radio"
-            id="priority-1"
-            name="priority"
-            onChange={handleChange}
-            value={1}
-            checked={formData.priority == 1}
-          />
-          <label>3</label>
           <input
             type="radio"
             id="priority-3"
