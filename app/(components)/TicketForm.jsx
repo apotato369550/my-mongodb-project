@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const TicketForm = () => {
-
   const router = useRouter();
   const handleChange = (e) => {
     const value = e.target.value;
@@ -18,7 +17,7 @@ const TicketForm = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("api/Tickets", {
+    const res = await fetch("/api/Tickets", {
       method: "POST",
       body: JSON.stringify({formData}) ,
         "content-type": "application/json"
