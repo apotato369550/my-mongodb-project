@@ -1,10 +1,17 @@
+import React from "react";
 import TicketCard from "./(components)/TicketCard";
 
 const getTickets = async () => {
   try {
-    const res = await fetch("https://localhost:3000/api/Tickets", {
+    const res = await fetch("http://localhost:3000/api/Tickets", {
       cache: "no-store",
     });
+
+    console.log(res);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch topics.");
+    }
 
     return res.json();
   } catch (error) {
@@ -30,7 +37,11 @@ const Dashboard = async () => {
                 {tickets
                   .filter((ticket) => ticket.category === uniqueCategory)
                   .map((filteredTicket, _index) => (
-                    <TicketCard id={_index} key={_index} ticket={ticket} />
+                    <TicketCard
+                      id={_index}
+                      key={_index}
+                      ticket={filteredTicket}
+                    />
                   ))}
               </div>
             </div>

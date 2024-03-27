@@ -16,6 +16,7 @@ export async function POST(req) {
 }
 
 export async function GET() {
+    console.log("GET RAN")
     try {
         const tickets = await Ticket.find();
         return NextResponse.json(
