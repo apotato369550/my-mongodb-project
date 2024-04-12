@@ -41,8 +41,8 @@ const TicketForm = ({ ticket }) => {
       }
     }
 
-    router.refresh();
     router.push("/");
+    router.refresh();
 
     console.log("Submitted");
   };
